@@ -43,5 +43,7 @@ help: ## Show available targets
 	@grep -E '^[a-zA-Z0-9_-]+:.*##' Makefile | \
 	awk 'BEGIN {FS = ":.*## "}; {printf "  %-10s %s\n", $$1, $$2}'
 
-count: build ## count the source files
+count: build ## report source files and built words
 	@ls -1 $(SRC_DIR)/*.txt | wc -l
+	@wc -w $(OUTPUTS) | tail -1
+
