@@ -42,3 +42,6 @@ ci: clean check test ## Run clean, check, build and test
 help: ## Show available targets
 	@grep -E '^[a-zA-Z0-9_-]+:.*##' Makefile | \
 	awk 'BEGIN {FS = ":.*## "}; {printf "  %-10s %s\n", $$1, $$2}'
+
+count: build ## report how many words were built
+	@wc -w $(OUTPUTS) | tail -1
